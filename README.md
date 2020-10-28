@@ -1,4 +1,4 @@
-patient-sort
+ref-range-test-patients
 Author: Ben Prince
 Version: 1.2
 Description: This program takes in an excel file with a list of age ranges for a specific sex and
