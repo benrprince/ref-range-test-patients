@@ -9,13 +9,10 @@ import xlwt
 import os
 
 
-def patients(filename):
+def parse_patients(filename):
     m_list = []
     f_list = []
     u_list = []
-
-    # minutes for 1 week. This can change
-    overlap = 10080
 
     xl_workbook = xlrd.open_workbook(filename)
     sheet = xl_workbook.sheet_by_index(0)
@@ -41,6 +38,17 @@ def patients(filename):
     # print(ps.test_patient_list(m_list, overlap))
     # print(ps.test_patient_list(f_list, overlap))
     # print(ps.test_patient_list(u_list, overlap))
+
+    return m_list, f_list, u_list
+
+
+def get_patients_wb(filename):
+    
+    # minutes for 1 week. This can change
+    overlap = 10080
+
+    # use above function to split out the age and sex lines
+    m_list, f_list, u_list = parse_patients(filename)
 
     # Write to a new workbook
     wb = xlwt.Workbook()
