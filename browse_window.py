@@ -5,6 +5,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
+from PIL import ImageTk, Image
 import xlwt
 import patient_main as pm
 import pathlib
@@ -20,8 +21,13 @@ class Window(Tk):
         self.browse = ttk.Button(self)
         self.instruction = ttk.Label(self)
         self.fileLoc = ttk.Label(self)
-        self.title("Test Patient Generator")
+        self.image = PhotoImage(file="example.png")
+        self.examplePic = Label(self, image=self.image)
+        self.examplePic.place(x=295, y=40)
+        self.exampleInstructions = ttk.Label(self)
+        self.title("Test Patient Generator v1.2")
         self.minsize(550, 300)
+        self.resizable(0,0)
         self.add_buttons()
 
     def add_buttons(self):
@@ -31,8 +37,20 @@ class Window(Tk):
         self.browse["text"] = "Browse"
         self.browse["command"] = lambda: self.browse_files()
         self.browse.pack(side="bottom")
-        self.instruction["text"] = "Hello"
+        self.instruction["text"] = "Welcome!\n"\
+                                    "Browse for a file then select Run to\n"\
+                                    "generate the test patient file. Select\n"\
+                                    "a save location and go there to see the\n"\
+                                    "generated file.\n\n"\
+                                    "A few things to Note:\n"\
+                                    "- Time is currently in minutes (input and output)\n"\
+                                    "- Undiffernetiated can be anything (Unknown, etc)\n"\
+                                    "- All three sex types need to have normal casing\n"\
+                                    "- The first row is skipped, it is assumed to be\n"\
+                                    "  a header row for each column."
         self.instruction.place(x=20, y=20)
+        self.exampleInstructions["text"] = "Please format data as shown here:"
+        self.exampleInstructions.place(x=300, y=20)
 
     def run_program(self):
         global filename
