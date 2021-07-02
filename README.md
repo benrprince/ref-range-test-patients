@@ -18,3 +18,6 @@ Program Internal Explanation: TODO
                           
 Output Excel File: Output is 2 columns: Sex and Age. These pairs should be used to create test 
                    patients. As of now (V 1.2) the output age is in minutes.
+                   
+Example Excel Input:
+![image](https://user-images.githubusercontent.com/55722294/124276258-2c56b280-db09-11eb-93d4-806cd7765c8a.png)
